@@ -14,8 +14,6 @@ class ViewController: UIViewController {
     
     var models: [CharacterModel] = []
     
-    // MARK: - Life cycle
-    
     lazy var tableView: UITableView = {
        let tableView = UITableView()
         
@@ -23,6 +21,39 @@ class ViewController: UIViewController {
         
         return tableView
     }()
+    
+    lazy var navigationBar: UINavigationBar = {
+       let navBar = UINavigationBar()
+
+        navigationItem.rightBarButtonItem = loadCharactersButton
+        navigationItem.title = "Персонажи"
+        view.addSubview(navBar)
+
+        return navBar
+    }()
+    
+//    lazy var navigaionControllerName: UINavigationItem = {
+//       let navigaionControllerName = UILabel()
+//        navigaionControllerName.text = "Персонажи"
+//        navigaionControllerName.font = .systemFont(ofSize: 20, weight: .bold)
+//        
+//        let navigaionControllerNameItem = UINavigationItem()
+//        navigationBar.setItems([navigaionControllerNameItem], animated: false)
+//        
+//        return navigaionControllerNameItem
+//    }()
+    
+    var loadCharactersButton: UIBarButtonItem = {
+//        let loadCharactersButton = UIButton()
+//        loadCharactersButton.setImage(.add, for: .normal)
+//        loadCharactersButton.addTarget(self, action: #selector(reloadTableView), for: .touchDown)
+        
+        let loadCharactersButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(reloadTableView))
+                
+        return loadCharactersButtonItem
+    }()
+    
+    // MARK: - Life cycle
     
     override func loadView() {
         super.loadView()
@@ -56,6 +87,9 @@ extension ViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        navigationBar.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+        }
     }
 }
 
@@ -71,13 +105,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let model = models[indexPath.row]
         
         cell.configure(with: model)
-        cell.selectionStyle = .none
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 220
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let model = models[indexPath.row]
+        output?.saveModel(from: model)
     }
 }
 
@@ -86,6 +126,11 @@ extension ViewController {
         self.models = models
         
         tableView.reloadData()
+    }
+    
+    @objc func reloadTableView() {
+        tableView.reloadData()
+        print("hello")
     }
 }
 

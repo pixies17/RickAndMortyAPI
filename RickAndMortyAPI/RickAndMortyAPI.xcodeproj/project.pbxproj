@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE5DE8F32535BA0A00C0EDFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */; };
-		CE5DE8F52535BA0A00C0EDFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F42535BA0A00C0EDFA /* SceneDelegate.swift */; };
 		CE5DE8F72535BA0A00C0EDFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F62535BA0A00C0EDFA /* ViewController.swift */; };
 		CE5DE8FC2535BA0C00C0EDFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5DE8FB2535BA0C00C0EDFA /* Assets.xcassets */; };
 		CE5DE8FF2535BA0C00C0EDFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5DE8FD2535BA0C00C0EDFA /* LaunchScreen.storyboard */; };
@@ -51,7 +50,6 @@
 		C7DE13EA573C5F47D783D2E1 /* Pods-RickAndMortyAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyAPI.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyAPI/Pods-RickAndMortyAPI.release.xcconfig"; sourceTree = "<group>"; };
 		CE5DE8EF2535BA0A00C0EDFA /* RickAndMortyAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE5DE8F42535BA0A00C0EDFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE5DE8F62535BA0A00C0EDFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE5DE8FB2535BA0C00C0EDFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5DE8FE2535BA0C00C0EDFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 				CEC41E6B2536EEDA00FB4C25 /* Presenter */,
 				CE64A9002536DCAB003321B4 /* VIewController */,
 				CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */,
-				CE5DE8F42535BA0A00C0EDFA /* SceneDelegate.swift */,
 				CE5DE8FB2535BA0C00C0EDFA /* Assets.xcassets */,
 				CE5DE8FD2535BA0C00C0EDFA /* LaunchScreen.storyboard */,
 				CE5DE9002535BA0C00C0EDFA /* Info.plist */,
@@ -426,7 +423,6 @@
 				CE5DE92E2535BE6300C0EDFA /* TableViewCell.swift in Sources */,
 				CE5DE8F32535BA0A00C0EDFA /* AppDelegate.swift in Sources */,
 				CE5DE9372535D87800C0EDFA /* CharacterModel.swift in Sources */,
-				CE5DE8F52535BA0A00C0EDFA /* SceneDelegate.swift in Sources */,
 				CEA24221253991D700C7A35C /* APIRickAndMortyManager.swift in Sources */,
 				CEDD02CF2539C56B002B8339 /* NetworkRouterCompletion.swift in Sources */,
 				CEDD02D92539CC8E002B8339 /* NetworkManager.swift in Sources */,
@@ -603,6 +599,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RickAndMortyAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -622,6 +619,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RickAndMortyAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
