@@ -40,8 +40,8 @@ struct NetworkManager {
                     }
                     
                     do {
-                        let apiiResponse = try JSONSerialization.jsonObject(with: responseData, options: [])
-                        print (apiiResponse)
+//                        let apiiResponse = try JSONSerialization.jsonObject(with: responseData, options: [])
+//                        print (apiiResponse)
                         let apiResponse = try JSONDecoder().decode(CharacterList.self, from: responseData)
                         completion(apiResponse.results, nil)
                     } catch {

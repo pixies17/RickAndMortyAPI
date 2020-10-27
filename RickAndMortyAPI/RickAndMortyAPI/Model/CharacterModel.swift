@@ -13,15 +13,15 @@ struct CharacterList: Decodable {
 }
 
 struct CharacterModel: Decodable {
-    let id: Int
-    let name: String
-    let status: String
-    let species: String
-    let type: String
-    let gender: String
-    let origin: Origin
-    let imageUrl: String
-    let characterUrl: String
+    var id: Int
+    var name: String
+    var status: String
+    var species: String
+    var type: String
+    var gender: String
+    var origin: Origin
+    var imageUrl: String
+    var characterUrl: String
         
     private enum CodingKeys: String, CodingKey {
         case id
@@ -37,18 +37,28 @@ struct CharacterModel: Decodable {
 }
 
 @objc class Origin: NSObject, Decodable {
-    let name: String
-    let url: String
+    @objc dynamic var name: String
+    @objc dynamic var url: String
 }
 
-final class CharacterModelRealm: Object {
+class CharacterModelRealm: Object {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
     @objc dynamic var status = ""
     @objc dynamic var species = ""
     @objc dynamic var type = ""
     @objc dynamic var gender = ""
-//    @objc dynamic var origin: Origin? = nil
+    @objc dynamic var originName = ""
     @objc dynamic var imageUrl = ""
     @objc dynamic var characterUrl = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    convenience init(id: Int) {
+        self.init()
+        
+        self.id = id
+    }
 }

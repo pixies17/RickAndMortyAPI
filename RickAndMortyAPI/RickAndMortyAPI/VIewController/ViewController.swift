@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     var models: [CharacterModel] = []
     
+    var modelsRealm: [CharacterModelRealm] = []
+    
     lazy var tableView: UITableView = {
        let tableView = UITableView()
         
@@ -48,7 +50,7 @@ class ViewController: UIViewController {
 //        loadCharactersButton.setImage(.add, for: .normal)
 //        loadCharactersButton.addTarget(self, action: #selector(reloadTableView), for: .touchDown)
         
-        let loadCharactersButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(reloadTableView))
+        let loadCharactersButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(reloadData))
                 
         return loadCharactersButtonItem
     }()
@@ -65,7 +67,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupConstraints()
-        output?.getCharacters()
+        
+        guard let output = output else { return }
+        output.getCharacters()
+        modelsRealm = output.loadCharactersRealm()
     }
 }
 
@@ -97,14 +102,29 @@ extension ViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        if !models.isEmpty {
+            return models.count
+        } else if !modelsRealm.isEmpty {
+            return modelsRealm.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.cellId, for: indexPath) as? TableViewCell else { fatalError("cant deque cell")}
-        let model = models[indexPath.row]
         
-        cell.configure(with: model)
+        if !models.isEmpty {
+            let model = models[indexPath.row]
+            cell.configure(with: model)
+            
+            return cell
+        } else if !modelsRealm.isEmpty {
+            let modelRealm = modelsRealm[indexPath.row]
+            cell.configure(with: modelRealm)
+            
+            return cell
+        }
         
         return cell
     }
@@ -128,7 +148,7 @@ extension ViewController {
         tableView.reloadData()
     }
     
-    @objc func reloadTableView() {
+    @objc func reloadData() {
         tableView.reloadData()
         print("hello")
     }

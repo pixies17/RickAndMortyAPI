@@ -138,4 +138,13 @@ extension TableViewCell {
         originLabel.text = "Место рождения: " + model.origin.name
         characterImage.sd_setImage(with: URL(string: model.imageUrl), completed: nil)
     }
+    
+    func configure(with model: CharacterModelRealm) {
+        nameLabel.text = "Имя: " + model.name
+        statusLabel.text = "Статус: " + model.status
+        speciesLabel.text = "Вид: " + model.species
+        genderLabel.text = "Пол: " + model.gender
+        originLabel.text = "Место рождения: " + model.originName
+        characterImage.sd_setImage(with: URL(string: model.imageUrl), completed: nil)
+    }
 }

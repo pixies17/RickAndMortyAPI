@@ -12,7 +12,7 @@ final class Presenter {
     weak var view: ViewController?
     
     let realm = try! Realm()
-    
+        
     func getCharacters() {
         NetworkManager.getNewCharacters(requestState: .forPage(page: 1)) { models, error in
             guard error == nil else { return }
@@ -26,15 +26,16 @@ final class Presenter {
     }
     
     func saveModel(from model: CharacterModel) {
-        let modelForSave = CharacterModelRealm()
+        let modelForSave = CharacterModelRealm(id: model.id)
+        
+        if realm.object(ofType: CharacterModelRealm.self, forPrimaryKey: model.id) != nil { return }
         
         modelForSave.name = model.name
-        modelForSave.id = model.id
         modelForSave.status = model.status
         modelForSave.species = model.species
         modelForSave.type = model.type
         modelForSave.gender = model.gender
-//        modelForSave.origin = model.origin
+        modelForSave.originName = model.origin.name
         modelForSave.imageUrl = model.imageUrl
         modelForSave.characterUrl = model.characterUrl
         
@@ -42,8 +43,19 @@ final class Presenter {
             realm.add(modelForSave)
         }
     }
-//    
-//    func loadCharactersRealm(from model: CharacterModelRealm) {
-//        let characters = realm.objects(model)
-//    }
+    
+    func loadCharactersRealm() -> [CharacterModelRealm] {
+        let characters = realm.objects(CharacterModelRealm.self)
+        var modelsRealm: [CharacterModelRealm] = []
+        
+        characters.forEach({ character in
+            modelsRealm.append(character)
+        })
+        
+        view?.reloadData()
+        
+        print(characters.count)
+        
+        return modelsRealm
+    }
 }
