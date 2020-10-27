@@ -22,7 +22,8 @@ struct NetworkManager {
         default: return .failure("Something goes wrong")
         }
     }
-    
+    #warning("этого не должно быть в NetworkManager")
+    #warning("надо создать класс APIRequest, откуда ты будешь все подтягивать ")
     static func getNewCharacters(requestState: CharactersAPI, completion: @escaping (_ characters: [CharacterModel]?, _ error: String?) -> Void) {
         router.request(requestState) { data, response, error in
             if error != nil {

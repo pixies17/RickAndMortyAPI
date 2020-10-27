@@ -8,6 +8,8 @@
 import Foundation
 import RealmSwift
 
+#warning("надо закрыть все протоколами")
+#warning("Лучше сделать какой-то класс который будет работаь с реалмом, чтобы внутри пресентера каждый раз не инитить реалм")
 final class Presenter {
     weak var view: ViewController?
     
@@ -43,7 +45,7 @@ final class Presenter {
             realm.add(modelForSave)
         }
     }
-    
+    //непонятное название функции
     func loadCharactersRealm() -> [CharacterModelRealm] {
         let characters = realm.objects(CharacterModelRealm.self)
         var modelsRealm: [CharacterModelRealm] = []

@@ -7,6 +7,7 @@
 
 import Foundation
 
+#warning("лучше поработать с неймингами, не просто вью контроллер и тп, а CharactersListViewController и тп")
 final class Assembly {
     
     static func createCharacterModule() -> ViewController {

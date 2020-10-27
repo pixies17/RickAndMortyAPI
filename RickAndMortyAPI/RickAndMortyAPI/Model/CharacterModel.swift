@@ -7,7 +7,7 @@
 
 import Foundation
 import RealmSwift
-
+#warning("лучше разбить на несколько файлов чтобы не искать кучу файлов")
 struct CharacterList: Decodable {
     let results: [CharacterModel]
 }

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationContoller: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        #warning("лучше вынести в отдельный метод")
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let mainVC = Assembly.createCharacterModule()

@@ -4,7 +4,7 @@
 //
 //  Created by Egor Kosilov on 14.10.2020.
 //
-
+#warning("надо удалить")
 //import Foundation
 //
 //typealias JSONTask = URLSessionDataTask
