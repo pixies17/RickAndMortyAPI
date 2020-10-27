@@ -104,10 +104,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !models.isEmpty {
             return models.count
-        } else if !modelsRealm.isEmpty {
-            return modelsRealm.count
         } else {
-            return 0
+            return modelsRealm.count
         }
     }
     
@@ -136,8 +134,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let model = models[indexPath.row]
-        output?.saveModel(from: model)
+        if !models.isEmpty {
+            let model = models[indexPath.row]
+            output?.saveModel(from: model)
+        }
     }
 }
 
