@@ -21,6 +21,7 @@
 		CEA242382539BE8400C7A35C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA242372539BE8400C7A35C /* HTTPMethod.swift */; };
 		CEC41E672536EED400FB4C25 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41E662536EED400FB4C25 /* Presenter.swift */; };
 		CEC41E702536FBAB00FB4C25 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41E6F2536FBAB00FB4C25 /* APIManager.swift */; };
+		CED44098254995E80089044C /* CharacterModelRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED44097254995E80089044C /* CharacterModelRealm.swift */; };
 		CEDD02CF2539C56B002B8339 /* NetworkRouterCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDD02CE2539C56B002B8339 /* NetworkRouterCompletion.swift */; };
 		CEDD02D42539C753002B8339 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDD02D32539C753002B8339 /* Router.swift */; };
 		CEDD02D92539CC8E002B8339 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDD02D82539CC8E002B8339 /* NetworkManager.swift */; };
@@ -68,6 +69,7 @@
 		CEA242372539BE8400C7A35C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		CEC41E662536EED400FB4C25 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		CEC41E6F2536FBAB00FB4C25 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		CED44097254995E80089044C /* CharacterModelRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModelRealm.swift; sourceTree = "<group>"; };
 		CEDD02CE2539C56B002B8339 /* NetworkRouterCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouterCompletion.swift; sourceTree = "<group>"; };
 		CEDD02D32539C753002B8339 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CEDD02D82539CC8E002B8339 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5DE9362535D87800C0EDFA /* CharacterModel.swift */,
+				CED44097254995E80089044C /* CharacterModelRealm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				CEC41E672536EED400FB4C25 /* Presenter.swift in Sources */,
 				CE5DE8F72535BA0A00C0EDFA /* ViewController.swift in Sources */,
 				CEA242262539BDAA00C7A35C /* APIRequest.swift in Sources */,
+				CED44098254995E80089044C /* CharacterModelRealm.swift in Sources */,
 				CEA1D98D253DB25400A224DE /* Assembly.swift in Sources */,
 				CE5DE92E2535BE6300C0EDFA /* TableViewCell.swift in Sources */,
 				CE5DE8F32535BA0A00C0EDFA /* AppDelegate.swift in Sources */,

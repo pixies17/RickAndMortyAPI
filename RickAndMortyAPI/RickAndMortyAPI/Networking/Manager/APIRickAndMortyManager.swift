@@ -7,49 +7,20 @@
 
 import Foundation
 
-#warning("по сути это почти то, что я хочу видеть от APIRequest")
-#warning("тут должен быть тип респонса, в который декодится дата")
-#warning("урл по которому проходит запрос")
-#warning("входные параметры, у тебя это page")
-//struct GetLocalitiesRequest: APIRequest {
-//    typealias Response = LocalitiesContainer
-//
-//    var url: URL { "https://geocode-maps.yandex.ru/1.x/" }
-//
-//    let query: String
-//
-//    let apiKey: String = Constants.yandexAPIKey
-//    let format: String = "json"
-//
-//    private enum CodingKeys: String, CodingKey {
-//        case apiKey = "apikey"
-//        case query = "geocode"
-//        case format
-//    }
-//
-//    init(with query: String) {
-//        self.query = query + " город"
-//    }
-//}
-public enum UrlPath {
-    case all
-    case forPage(page: Int)
-}
-
 struct CharactersAPI: APIRequest {
-    typealias Response = CharacterList<[CharacterModel]>
+    typealias Response = [CharacterModel]
     
     var path: String {
-        return "characters/"
+        return "character/"
     }
     
     var HTTPMethod: HTTPMethod { .get }
     
-    let page: Int?
-    
-    init(page: Int? = nil) {
-        self.page = page
-    }
+//    let page: Int?
+//
+//    init(page: Int? = nil) {
+//        self.page = page
+//    }
 }
 //    var HTTPMethod: HTTPMethod {
 //        return .get
@@ -82,27 +53,3 @@ struct CharactersAPI: APIRequest {
 //        let url = URL(string: path, relativeTo: baseURL)
 //        return URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
 //    }
-
-//
-//final class APIRicAndMoryManager: APIManager {
-//    let sessionConfiguration: URLSessionConfiguration
-//    lazy var session: URLSession = {
-//        return URLSession(configuration: sessionConfiguration.self)
-//    }()
-//        
-//    init(sessionConfiguration: URLSessionConfiguration) {
-//        self.sessionConfiguration = sessionConfiguration
-//    }
-//    
-//    func getCharacters(page: Int, completion: @escaping (APIResult<CharacterList>) -> Void) {
-//        let request = CharactersAPI.forPage(page: 1).request
-//        
-//        fetch(request: request) { (json) -> [String: Any] in
-//            if let dict = json["results"] as? [String: Any] {
-//                return dict
-//            } else {
-//                return nil
-//            }
-//        }, completionHandler: completion)
-//    }
-//}

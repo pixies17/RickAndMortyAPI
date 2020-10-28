@@ -14,18 +14,20 @@ final class Presenter {
     weak var view: ViewController?
     
     let realm = try! Realm()
-        
+    
     func getCharacters() {
-        NetworkManager.getNewCharacters(requestState: .forPage(page: 1)) { models, error in
-            guard error == nil else { return }
-            
-            DispatchQueue.main.async {
-                guard let models = models else { return }
-                
-                self.view?.showModels(models)
+        NetworkManager.router.request(CharactersAPI()) { result in
+            switch result {
+            case .success(let characters):
+                DispatchQueue.main.async {
+                    self.view?.showModels(characters)
+                }
+            case .failure(_):
+                print("something goes wrong")
             }
         }
     }
+
     
     func saveModel(from model: CharacterModel) {
         let modelForSave = CharacterModelRealm(id: model.id)

@@ -7,7 +7,6 @@
 
 import Foundation
 
-#warning("сделать протокол APIRequest в котором будут хранится url, httpmethod и входные параметры если они нужны")
 protocol APIRequest: Encodable {
     associatedtype Response: Decodable
     

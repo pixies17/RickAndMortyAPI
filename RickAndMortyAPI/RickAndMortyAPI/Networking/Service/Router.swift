@@ -27,8 +27,8 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
                             return
                         }
                         do {
-                            let apiResponse = try JSONDecoder().decode(CharacterList<T.Response>.self, from: responseData)
-                            completion(.success(apiResponse.results))
+                            let apiResponse = try JSONDecoder().decode(CharacterList.self, from: responseData)
+                            completion(.success(apiResponse.results as! T.Response))
                         } catch {
                             completion(.failure(error))
                         }
@@ -37,7 +37,6 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
                     
                     }
                 }
-                completion(.failure(error!))
             })
         } catch {
             completion(.failure(error))
