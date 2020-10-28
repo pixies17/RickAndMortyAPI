@@ -7,9 +7,8 @@
 
 import Foundation
 #warning("сделать комплишены с помощью структуры Result")
-public typealias NetworkRouterCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
+public typealias NetworkRouterCompletion<Data> = (Result<Data, Error>) -> Void
 
 protocol NetworkRouter: class {
-    associatedtype EndPoint: EndPointType
-    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion)
+    func request<T: APIRequest>(_ route: T, completion: @escaping NetworkRouterCompletion<T.Response>)
 }

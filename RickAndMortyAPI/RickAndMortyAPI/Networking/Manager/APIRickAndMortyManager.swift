@@ -31,39 +31,58 @@ import Foundation
 //        self.query = query + " город"
 //    }
 //}
-enum CharactersAPI: EndPointType {
-    var HTTPMethod: HTTPMethod {
-        return .get
-    }
-    
+public enum UrlPath {
     case all
     case forPage(page: Int)
-    case singleCharacter(id: Int)
-    
-    var baseURL: URL {
-        return URL(string: "https://rickandmortyapi.com/api/")!
-    }
-    
-    var URLForPage: URL {
-        return URL(string: "https://rickandmortyapi.com/api/character/?page=1")!
-    }
+}
+
+struct CharactersAPI: APIRequest {
+    typealias Response = CharacterList<[CharacterModel]>
     
     var path: String {
-        switch self {
-        case .all:
-            return "character"
-        case .forPage(let page):
-            return "character/?page=\(page)"
-        case .singleCharacter(let id):
-            return "character/\(id)"
-        }
+        return "characters/"
     }
     
-    var request: URLRequest {
-        let url = URL(string: path, relativeTo: baseURL)
-        return URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
+    var HTTPMethod: HTTPMethod { .get }
+    
+    let page: Int?
+    
+    init(page: Int? = nil) {
+        self.page = page
     }
 }
+//    var HTTPMethod: HTTPMethod {
+//        return .get
+//    }
+//
+//    case all
+//    case forPage(page: Int)
+//    case singleCharacter(id: Int)
+//
+//    var baseURL: URL {
+//        return URL(string: "https://rickandmortyapi.com/api/")!
+//    }
+//
+//    var URLForPage: URL {
+//        return URL(string: "https://rickandmortyapi.com/api/character/?page=1")!
+//    }
+//
+//    var path: String {
+//        switch self {
+//        case .all:
+//            return "character"
+//        case .forPage(let page):
+//            return "character/?page=\(page)"
+//        case .singleCharacter(let id):
+//            return "character/\(id)"
+//        }
+//    }
+//
+//    var request: URLRequest {
+//        let url = URL(string: path, relativeTo: baseURL)
+//        return URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
+//    }
+
 //
 //final class APIRicAndMoryManager: APIManager {
 //    let sessionConfiguration: URLSessionConfiguration

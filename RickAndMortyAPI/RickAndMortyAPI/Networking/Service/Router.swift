@@ -7,30 +7,50 @@
 
 import Foundation
 
-class Router<EndPoint: EndPointType>: NetworkRouter {
+class Router<EndPoint: APIRequest>: NetworkRouter {
     private var task: URLSessionTask?
     
-    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
+    let baseUrl = "https://rickandmortyapi.com/api/"
+    
+    func request<T: APIRequest>(_ route: T, completion: @escaping NetworkRouterCompletion<T.Response>) {
         let session = URLSession.shared
         do {
             let request = try buildRequest(from: route)
             task = session.dataTask(with: request, completionHandler: { data, response, error in
-                completion(data, response, error)
-                #warning("надо сразу тут декодить данные, тебе незачем передавать сырую data для каждлого запроса и сразу возвращать готовые данные: либо ошибку либо сразу данные")
-                #warning("для этого надо посмотреть структуру Result")
+                if let response = response as? HTTPURLResponse {
+                    let result = NetworkManager.handleNetworkResponse(response)
+                    
+                    switch result {
+                    case .success:
+                        guard let responseData = data else {
+                            completion(.failure(error!))
+                            return
+                        }
+                        do {
+                            let apiResponse = try JSONDecoder().decode(CharacterList<T.Response>.self, from: responseData)
+                            completion(.success(apiResponse.results))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    case .failure(let trouble):
+                        completion(.failure(trouble as! Error))
+                    
+                    }
+                }
+                completion(.failure(error!))
             })
         } catch {
-            completion(nil, nil, error)
+            completion(.failure(error))
         }
         task?.resume()
     }
     
     #warning("по сути ты тут только добавлешь тип httpMethod, а если будут входные параметры?")
-    fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
+    fileprivate func buildRequest<T: APIRequest>(from route: T) throws -> URLRequest {
         
 //        var request = URLRequest(url: URL(string: route.baseURL.appendingPathComponent(route.path).absoluteString.removingPercentEncoding!)!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
 //        var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
-        var request = route.request
+        var request = URLRequest(url: URL(string: baseUrl + route.path)!)
         
         request.httpMethod = route.HTTPMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
