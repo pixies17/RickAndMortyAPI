@@ -7,6 +7,10 @@
 
 import Foundation
 
+#warning("добавить суда page как взодной параметр")
+#warning("что за неймниг? почему не GetCharactersRequest()")
+#warning("https://medium.com/swift2go/building-safe-url-in-swift-using-urlcomponents-and-urlqueryitem-alfian-losari-510a7b1f3c7e")
+#warning("сделай у апи реквеста обязательным поле parameters и передавай в запрос")
 struct CharactersAPI: APIRequest {
     typealias Response = [CharacterModel]
     

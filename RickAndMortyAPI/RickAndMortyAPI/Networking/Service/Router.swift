@@ -27,6 +27,7 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
                             return
                         }
                         do {
+                            #warning("надо сразу декодить в респонс твоего APIRequst, это слишком жесткий хардкод")
                             let apiResponse = try JSONDecoder().decode(CharacterList.self, from: responseData)
                             completion(.success(apiResponse.results as! T.Response))
                         } catch {
