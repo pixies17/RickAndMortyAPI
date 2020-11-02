@@ -11,5 +11,7 @@ protocol APIRequest: Encodable {
     associatedtype Response: Decodable
     
     var path: String { get }
+    var parameters: [String: Int] { get }
+    var page: Int { get }
     var HTTPMethod: HTTPMethod { get }
 }

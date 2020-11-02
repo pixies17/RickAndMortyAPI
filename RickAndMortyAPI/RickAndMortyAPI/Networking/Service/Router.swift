@@ -27,9 +27,8 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
                             return
                         }
                         do {
-                            #warning("надо сразу декодить в респонс твоего APIRequst, это слишком жесткий хардкод")
-                            let apiResponse = try JSONDecoder().decode(CharacterList.self, from: responseData)
-                            completion(.success(apiResponse.results as! T.Response))
+                            let apiResponse = try JSONDecoder().decode(T.Response.self, from: responseData)
+                            completion(.success(apiResponse))
                         } catch {
                             completion(.failure(error))
                         }
@@ -45,12 +44,11 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
         task?.resume()
     }
     
-    #warning("по сути ты тут только добавлешь тип httpMethod, а если будут входные параметры?")
     fileprivate func buildRequest<T: APIRequest>(from route: T) throws -> URLRequest {
+        var urlComponets = URLComponents()
+        urlComponets.setQueryItems(with: route.parameters)
         
-//        var request = URLRequest(url: URL(string: route.baseURL.appendingPathComponent(route.path).absoluteString.removingPercentEncoding!)!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
-//        var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
-        var request = URLRequest(url: URL(string: baseUrl + route.path)!)
+        var request = URLRequest(url: URL(string: baseUrl + route.path + (urlComponets.url?.absoluteString ?? ""))!)
         
         request.httpMethod = route.HTTPMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -59,3 +57,8 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
     }
 }
 
+extension URLComponents {
+    mutating func setQueryItems(with parameters: [String: Int]) {
+        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: String($0.value)) }
+    }
+}

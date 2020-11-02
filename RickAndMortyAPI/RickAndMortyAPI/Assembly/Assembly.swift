@@ -7,13 +7,12 @@
 
 import Foundation
 
-#warning("лучше поработать с неймингами, не просто вью контроллер и тп, а CharactersListViewController и тп")
 final class Assembly {
     
-    static func createCharacterModule() -> ViewController {
-        let vc = ViewController()
+    static func createCharacterModule() -> CharactersListViewController {
+        let vc = CharactersListViewController()
         
-        let output = Presenter()
+        let output = CharactersListPresenter()
         output.view = vc
         
         vc.output = output

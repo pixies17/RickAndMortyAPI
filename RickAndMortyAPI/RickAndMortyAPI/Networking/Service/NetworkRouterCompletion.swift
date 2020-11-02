@@ -6,7 +6,6 @@
 //
 
 import Foundation
-#warning("сделать комплишены с помощью структуры Result")
 public typealias NetworkRouterCompletion<Data> = (Result<Data, Error>) -> Void
 
 protocol NetworkRouter: class {

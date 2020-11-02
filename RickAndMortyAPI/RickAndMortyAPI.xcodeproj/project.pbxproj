@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE5DE8F32535BA0A00C0EDFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */; };
-		CE5DE8F72535BA0A00C0EDFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F62535BA0A00C0EDFA /* ViewController.swift */; };
+		CE5DE8F72535BA0A00C0EDFA /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F62535BA0A00C0EDFA /* CharactersListViewController.swift */; };
 		CE5DE8FC2535BA0C00C0EDFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5DE8FB2535BA0C00C0EDFA /* Assets.xcassets */; };
 		CE5DE8FF2535BA0C00C0EDFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5DE8FD2535BA0C00C0EDFA /* LaunchScreen.storyboard */; };
 		CE5DE90A2535BA0C00C0EDFA /* RickAndMortyAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE9092535BA0C00C0EDFA /* RickAndMortyAPITests.swift */; };
@@ -19,8 +19,7 @@
 		CEA24221253991D700C7A35C /* APIRickAndMortyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA24220253991D700C7A35C /* APIRickAndMortyManager.swift */; };
 		CEA242262539BDAA00C7A35C /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA242252539BDAA00C7A35C /* APIRequest.swift */; };
 		CEA242382539BE8400C7A35C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA242372539BE8400C7A35C /* HTTPMethod.swift */; };
-		CEC41E672536EED400FB4C25 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41E662536EED400FB4C25 /* Presenter.swift */; };
-		CEC41E702536FBAB00FB4C25 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41E6F2536FBAB00FB4C25 /* APIManager.swift */; };
+		CEC41E672536EED400FB4C25 /* CharactersListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41E662536EED400FB4C25 /* CharactersListPresenter.swift */; };
 		CED44098254995E80089044C /* CharacterModelRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED44097254995E80089044C /* CharacterModelRealm.swift */; };
 		CEDD02CF2539C56B002B8339 /* NetworkRouterCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDD02CE2539C56B002B8339 /* NetworkRouterCompletion.swift */; };
 		CEDD02D42539C753002B8339 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDD02D32539C753002B8339 /* Router.swift */; };
@@ -51,7 +50,7 @@
 		C7DE13EA573C5F47D783D2E1 /* Pods-RickAndMortyAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyAPI.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyAPI/Pods-RickAndMortyAPI.release.xcconfig"; sourceTree = "<group>"; };
 		CE5DE8EF2535BA0A00C0EDFA /* RickAndMortyAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE5DE8F62535BA0A00C0EDFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE5DE8F62535BA0A00C0EDFA /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
 		CE5DE8FB2535BA0C00C0EDFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5DE8FE2535BA0C00C0EDFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5DE9002535BA0C00C0EDFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,8 +66,7 @@
 		CEA24220253991D700C7A35C /* APIRickAndMortyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRickAndMortyManager.swift; sourceTree = "<group>"; };
 		CEA242252539BDAA00C7A35C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		CEA242372539BE8400C7A35C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		CEC41E662536EED400FB4C25 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		CEC41E6F2536FBAB00FB4C25 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		CEC41E662536EED400FB4C25 /* CharactersListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListPresenter.swift; sourceTree = "<group>"; };
 		CED44097254995E80089044C /* CharacterModelRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModelRealm.swift; sourceTree = "<group>"; };
 		CEDD02CE2539C56B002B8339 /* NetworkRouterCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouterCompletion.swift; sourceTree = "<group>"; };
 		CEDD02D32539C753002B8339 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -169,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				CE64A9012536DCC6003321B4 /* TableViewCell */,
-				CE5DE8F62535BA0A00C0EDFA /* ViewController.swift */,
+				CE5DE8F62535BA0A00C0EDFA /* CharactersListViewController.swift */,
 			);
 			path = VIewController;
 			sourceTree = "<group>";
@@ -211,7 +209,6 @@
 		CEA242302539BDBD00C7A35C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				CEC41E6F2536FBAB00FB4C25 /* APIManager.swift */,
 				CEA24220253991D700C7A35C /* APIRickAndMortyManager.swift */,
 				CEDD02D82539CC8E002B8339 /* NetworkManager.swift */,
 			);
@@ -232,7 +229,7 @@
 		CEC41E6B2536EEDA00FB4C25 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				CEC41E662536EED400FB4C25 /* Presenter.swift */,
+				CEC41E662536EED400FB4C25 /* CharactersListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -419,8 +416,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC41E672536EED400FB4C25 /* Presenter.swift in Sources */,
-				CE5DE8F72535BA0A00C0EDFA /* ViewController.swift in Sources */,
+				CEC41E672536EED400FB4C25 /* CharactersListPresenter.swift in Sources */,
+				CE5DE8F72535BA0A00C0EDFA /* CharactersListViewController.swift in Sources */,
 				CEA242262539BDAA00C7A35C /* APIRequest.swift in Sources */,
 				CED44098254995E80089044C /* CharacterModelRealm.swift in Sources */,
 				CEA1D98D253DB25400A224DE /* Assembly.swift in Sources */,
@@ -431,7 +428,6 @@
 				CEDD02CF2539C56B002B8339 /* NetworkRouterCompletion.swift in Sources */,
 				CEDD02D92539CC8E002B8339 /* NetworkManager.swift in Sources */,
 				CEA242382539BE8400C7A35C /* HTTPMethod.swift in Sources */,
-				CEC41E702536FBAB00FB4C25 /* APIManager.swift in Sources */,
 				CEDD02D42539C753002B8339 /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
