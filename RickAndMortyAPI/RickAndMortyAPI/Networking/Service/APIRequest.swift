@@ -12,6 +12,5 @@ protocol APIRequest: Encodable {
     
     var path: String { get }
     var parameters: [String: Int] { get }
-    var page: Int { get }
     var HTTPMethod: HTTPMethod { get }
 }

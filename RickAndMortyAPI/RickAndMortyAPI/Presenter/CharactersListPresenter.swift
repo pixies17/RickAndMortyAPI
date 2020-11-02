@@ -15,7 +15,7 @@ final class CharactersListPresenter {
     let realm = try! Realm()
     
     func getCharacters() {
-        NetworkManager.router.request(CharactersAPI(page: 15)) { result in
+        NetworkManager.router.request(CharactersAPI(parameters: ["page": 13])) { result in
             switch result {
             case .success(let characters):
                 DispatchQueue.main.async {

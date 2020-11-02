@@ -13,12 +13,8 @@ struct CharactersAPI: APIRequest {
     var path: String {
         return "character/"
     }
-    
-    var page: Int
-    
-    var parameters: [String : Int] {
-        ["page": page]
-    }
+        
+    var parameters: [String : Int]
     
     var HTTPMethod: HTTPMethod { .get }
 }
