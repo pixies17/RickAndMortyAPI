@@ -6,21 +6,22 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct CharacterList: Decodable {
     let results: [CharacterModel]
 }
 
-struct CharacterModel: Decodable {
-    var id: Int
-    var name: String
-    var status: String
-    var species: String
-    var type: String
-    var gender: String
-    var origin: Origin
-    var imageUrl: String
-    var characterUrl: String
+class CharacterModel: Object, Decodable {
+    @objc dynamic var id = 0
+    @objc dynamic var name = ""
+    @objc dynamic var status = ""
+    @objc dynamic var species = ""
+    @objc dynamic var type = ""
+    @objc dynamic var gender = ""
+    var origin: Origin?
+    @objc dynamic var imageUrl = ""
+    @objc dynamic var characterUrl = ""
         
     private enum CodingKeys: String, CodingKey {
         case id
@@ -33,9 +34,19 @@ struct CharacterModel: Decodable {
         case imageUrl = "image"
         case characterUrl = "url"
     }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    convenience init(id: Int) {
+        self.init()
+
+        self.id = id
+    }
 }
 
 struct Origin: Decodable {
-    var name: String
-    var url: String
+    var name = ""
+    var url = ""
 }

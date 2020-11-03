@@ -15,7 +15,7 @@ final class CharactersListPresenter {
     let realm = try! Realm()
     
     func getCharacters() {
-        NetworkManager.router.request(CharactersAPI(parameters: ["page": 13])) { result in
+        NetworkManager.router.request(CharactersAPI(parameters: ["page": 11])) { result in
             switch result {
             case .success(let characters):
                 DispatchQueue.main.async {
@@ -23,22 +23,25 @@ final class CharactersListPresenter {
                 }
             case .failure(_):
                 print("something goes wrong")
+                DispatchQueue.main.async {
+                    self.view?.showModels(self.loadCharactersFromRealm())
+                }
             }
         }
     }
 
     
     func saveModel(from model: CharacterModel) {
-        let modelForSave = CharacterModelRealm(id: model.id)
+        let modelForSave = CharacterModel(id: model.id)
         
-        if realm.object(ofType: CharacterModelRealm.self, forPrimaryKey: model.id) != nil { return }
+        if realm.object(ofType: CharacterModel.self, forPrimaryKey: model.id) != nil { return }
         
         modelForSave.name = model.name
         modelForSave.status = model.status
         modelForSave.species = model.species
         modelForSave.type = model.type
         modelForSave.gender = model.gender
-        modelForSave.originName = model.origin.name
+        modelForSave.origin?.name = model.origin?.name ?? ""
         modelForSave.imageUrl = model.imageUrl
         modelForSave.characterUrl = model.characterUrl
         
@@ -47,9 +50,9 @@ final class CharactersListPresenter {
         }
     }
     
-    func loadCharactersFromRealm() -> [CharacterModelRealm] {
-        let characters = realm.objects(CharacterModelRealm.self)
-        var modelsRealm: [CharacterModelRealm] = []
+    func loadCharactersFromRealm() -> [CharacterModel] {
+        let characters = realm.objects(CharacterModel.self)
+        var modelsRealm: [CharacterModel] = []
         
         characters.forEach({ character in
             modelsRealm.append(character)

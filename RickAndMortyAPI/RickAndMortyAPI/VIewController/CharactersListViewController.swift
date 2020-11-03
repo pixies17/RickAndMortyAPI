@@ -18,9 +18,7 @@ class CharactersListViewController: UIViewController {
     var output: CharactersListPresenter?
     
     var models: [CharacterModel] = []
-    
-    var modelsRealm: [CharacterModelRealm] = []
-    
+        
     lazy var tableView: UITableView = {
        let tableView = UITableView()
         
@@ -75,7 +73,7 @@ class CharactersListViewController: UIViewController {
         
         guard let output = output else { return }
         output.getCharacters()
-        modelsRealm = output.loadCharactersFromRealm()
+//        models = output.loadCharactersFromRealm()
     }
 }
 
@@ -107,27 +105,14 @@ extension CharactersListViewController {
 
 extension CharactersListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !models.isEmpty {
-            return models.count
-        } else {
-            return modelsRealm.count
-        }
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.cellId, for: indexPath) as? TableViewCell else { fatalError("cant deque cell")}
         
-        if !models.isEmpty {
-            let model = models[indexPath.row]
-            cell.configure(with: model)
-            
-            return cell
-        } else if !modelsRealm.isEmpty {
-            let modelRealm = modelsRealm[indexPath.row]
-            cell.configure(with: modelRealm)
-            
-            return cell
-        }
+        let model = models[indexPath.row]
+        cell.configure(with: model)
         
         return cell
     }
@@ -139,10 +124,8 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if !models.isEmpty {
-            let model = models[indexPath.row]
-            output?.saveModel(from: model)
-        }
+        let model = models[indexPath.row]
+        output?.saveModel(from: model)
     }
 }
 
