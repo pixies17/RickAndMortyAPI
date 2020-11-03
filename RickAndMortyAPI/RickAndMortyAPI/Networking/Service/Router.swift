@@ -7,6 +7,7 @@
 
 import Foundation
 
+#warning("почему не final?")
 class Router<EndPoint: APIRequest>: NetworkRouter {
     private var task: URLSessionTask?
     
@@ -27,6 +28,7 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
                             return
                         }
                         do {
+                            #warning("в таком случае лучше внутри класса роутер инитить декодер")
                             let apiResponse = try JSONDecoder().decode(T.Response.self, from: responseData)
                             completion(.success(apiResponse))
                         } catch {

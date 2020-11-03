@@ -7,6 +7,7 @@
 
 import Foundation
 
+#warning("почему int? лучше сразу закладываться на то, что там может быть вообще любой тип")
 protocol APIRequest: Encodable {
     associatedtype Response: Decodable
     
@@ -14,3 +15,5 @@ protocol APIRequest: Encodable {
     var parameters: [String: Int] { get }
     var HTTPMethod: HTTPMethod { get }
 }
+
+#warning("сделай экстеншен на протокол, чтобы все реквесты сразу были типа GET")

@@ -7,6 +7,8 @@
 
 import Foundation
 
+#warning("опять проблема с неймингрм")
+#warning("GetCharactersRequest")
 struct CharactersAPI: APIRequest {
     typealias Response = CharacterList
     
