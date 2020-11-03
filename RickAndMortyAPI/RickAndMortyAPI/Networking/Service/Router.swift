@@ -7,16 +7,16 @@
 
 import Foundation
 
-#warning("почему не final?")
-class Router<EndPoint: APIRequest>: NetworkRouter {
+final class Router<EndPoint: APIRequest>: NetworkRouter {
     private var task: URLSessionTask?
+    let decoder = JSONDecoder()
     
     let baseUrl = "https://rickandmortyapi.com/api/"
     
-    func request<T: APIRequest>(_ route: T, completion: @escaping NetworkRouterCompletion<T.Response>) {
+    func send<T: APIRequest>(_ request: T, completion: @escaping NetworkRouterCompletion<T.Response>) {
         let session = URLSession.shared
         do {
-            let request = try buildRequest(from: route)
+            let request = try buildRequest(from: request)
             task = session.dataTask(with: request, completionHandler: { data, response, error in
                 if let response = response as? HTTPURLResponse {
                     let result = NetworkManager.handleNetworkResponse(response)
@@ -28,8 +28,7 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
                             return
                         }
                         do {
-                            #warning("в таком случае лучше внутри класса роутер инитить декодер")
-                            let apiResponse = try JSONDecoder().decode(T.Response.self, from: responseData)
+                            let apiResponse = try self.decoder.decode(T.Response.self, from: responseData)
                             completion(.success(apiResponse))
                         } catch {
                             completion(.failure(error))
@@ -52,7 +51,7 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
         
         var request = URLRequest(url: URL(string: baseUrl + route.path + (urlComponets.url?.absoluteString ?? ""))!)
         
-        request.httpMethod = route.HTTPMethod.rawValue
+        request.httpMethod = route.httpMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         return request
@@ -60,7 +59,7 @@ class Router<EndPoint: APIRequest>: NetworkRouter {
 }
 
 extension URLComponents {
-    mutating func setQueryItems(with parameters: [String: Int]) {
-        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: String($0.value)) }
+    mutating func setQueryItems(with parameters: [String: Any]) {
+        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: String(describing: $0.value)) }
     }
 }

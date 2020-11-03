@@ -7,16 +7,12 @@
 
 import Foundation
 
-#warning("опять проблема с неймингрм")
-#warning("GetCharactersRequest")
-struct CharactersAPI: APIRequest {
+struct CharactersRequest: APIRequest {    
     typealias Response = CharacterList
     
     var path: String {
         return "character/"
     }
-        
-    var parameters: [String : Int]
     
-    var HTTPMethod: HTTPMethod { .get }
+    var parameters: [String: Any]
 }

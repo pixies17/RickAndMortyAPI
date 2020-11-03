@@ -11,7 +11,7 @@ struct NetworkManager {
     #warning("зачем здесь статик?")
     #warning("почему тут хардкод на CharactersAPI?")
     #warning("надо при ините этой структуры прокидывать APIRequest")
-    static let router = Router<CharactersAPI>()
+//    static let router = Router<<#EndPoint: APIRequest#>>()
     
     enum Result<String> {
         case success
