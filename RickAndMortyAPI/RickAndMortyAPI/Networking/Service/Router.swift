@@ -23,6 +23,7 @@ final class Router<EndPoint: APIRequest>: NetworkRouter {
                     
                     switch result {
                     case .success:
+                        #warning("почему тут форс анрэп? может крашнуться")
                         guard let responseData = data else {
                             completion(.failure(error!))
                             return
@@ -34,6 +35,7 @@ final class Router<EndPoint: APIRequest>: NetworkRouter {
                             completion(.failure(error))
                         }
                     case .failure(let trouble):
+                        #warning("из стринга в error? зачем?")
                         completion(.failure(trouble as! Error))
                     
                     }

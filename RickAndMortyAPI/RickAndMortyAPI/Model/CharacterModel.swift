@@ -8,10 +8,12 @@
 import Foundation
 import RealmSwift
 
+#warning("убери model из нейминга, просто character")
 struct CharacterList: Decodable {
     let results: [CharacterModel]
 }
 
+#warning("почему origin не Dynamic?")
 class CharacterModel: Object, Decodable {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
@@ -46,6 +48,7 @@ class CharacterModel: Object, Decodable {
     }
 }
 
+#warning("зачем дефолтные значения?")
 struct Origin: Decodable {
     var name = ""
     var url = ""

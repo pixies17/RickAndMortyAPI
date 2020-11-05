@@ -30,7 +30,7 @@ final class CharactersListPresenter {
         let realm = RealmService.shared.realm
         
         let modelForSave = CharacterModel(id: model.id)
-        
+        #warning("такие кейсы лучше закрывать guardom ")
         if realm.object(ofType: CharacterModel.self, forPrimaryKey: model.id) != nil { return }
         
         modelForSave.name = model.name
@@ -42,12 +42,13 @@ final class CharactersListPresenter {
         modelForSave.imageUrl = model.imageUrl
         modelForSave.characterUrl = model.characterUrl
         
+        #warning(" почему сразу нельзя сохранить модель, которая подается на вход?")
         RealmService.shared.save(modelForSave)
     }
     
     func charactersListFromRealm() -> [CharacterModel] {
         let realm = RealmService.shared.realm
-        
+        #warning("сделай функцию в менеджере куда подается тип и ты достаешь все элементы этого типа из базы и возвращается сразу массив")
         let characters = realm.objects(CharacterModel.self)
         var modelsRealm: [CharacterModel] = []
         

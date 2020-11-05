@@ -9,6 +9,7 @@ import Foundation
 import SnapKit
 import SDWebImage
 
+#warning("нейминг")
 final class TableViewCell: UITableViewCell {
     
     // MARK: - Properties

@@ -7,6 +7,14 @@
 
 import Foundation
 
+#warning("здесь нужен не failure(String), а создать кастомную ошибку, где будут описаные возможные варианты ошибок")
+//например
+//enum Error: Swift.Error {
+//case invalidURL
+//case encoding
+//case server(statusCode: Int)
+//case decoding
+//}
 struct NetworkManager {
     enum Result<String> {
         case success
