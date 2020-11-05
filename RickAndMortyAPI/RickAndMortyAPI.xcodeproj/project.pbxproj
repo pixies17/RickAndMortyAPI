@@ -14,8 +14,8 @@
 		CE5DE8FF2535BA0C00C0EDFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5DE8FD2535BA0C00C0EDFA /* LaunchScreen.storyboard */; };
 		CE5DE90A2535BA0C00C0EDFA /* RickAndMortyAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE9092535BA0C00C0EDFA /* RickAndMortyAPITests.swift */; };
 		CE5DE9152535BA0C00C0EDFA /* RickAndMortyAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE9142535BA0C00C0EDFA /* RickAndMortyAPIUITests.swift */; };
-		CE5DE92E2535BE6300C0EDFA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE92D2535BE6300C0EDFA /* TableViewCell.swift */; };
-		CE5DE9372535D87800C0EDFA /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE9362535D87800C0EDFA /* CharacterModel.swift */; };
+		CE5DE92E2535BE6300C0EDFA /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE92D2535BE6300C0EDFA /* CharacterCell.swift */; };
+		CE5DE9372535D87800C0EDFA /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE9362535D87800C0EDFA /* Character.swift */; };
 		CEA1D98D253DB25400A224DE /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1D98C253DB25400A224DE /* Assembly.swift */; };
 		CEA24221253991D700C7A35C /* APIRickAndMortyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA24220253991D700C7A35C /* APIRickAndMortyManager.swift */; };
 		CEA242262539BDAA00C7A35C /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA242252539BDAA00C7A35C /* APIRequest.swift */; };
@@ -61,8 +61,8 @@
 		CE5DE9102535BA0C00C0EDFA /* RickAndMortyAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5DE9142535BA0C00C0EDFA /* RickAndMortyAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyAPIUITests.swift; sourceTree = "<group>"; };
 		CE5DE9162535BA0C00C0EDFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE5DE92D2535BE6300C0EDFA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		CE5DE9362535D87800C0EDFA /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		CE5DE92D2535BE6300C0EDFA /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		CE5DE9362535D87800C0EDFA /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		CEA1D98C253DB25400A224DE /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		CEA24220253991D700C7A35C /* APIRickAndMortyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRickAndMortyManager.swift; sourceTree = "<group>"; };
 		CEA242252539BDAA00C7A35C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		CE64A9012536DCC6003321B4 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				CE5DE92D2535BE6300C0EDFA /* TableViewCell.swift */,
+				CE5DE92D2535BE6300C0EDFA /* CharacterCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 		CE64A9022536DCDD003321B4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE5DE9362535D87800C0EDFA /* CharacterModel.swift */,
+				CE5DE9362535D87800C0EDFA /* Character.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,9 +429,9 @@
 				CE5255412553E9AA0044B011 /* RealmService.swift in Sources */,
 				CEA242262539BDAA00C7A35C /* APIRequest.swift in Sources */,
 				CEA1D98D253DB25400A224DE /* Assembly.swift in Sources */,
-				CE5DE92E2535BE6300C0EDFA /* TableViewCell.swift in Sources */,
+				CE5DE92E2535BE6300C0EDFA /* CharacterCell.swift in Sources */,
 				CE5DE8F32535BA0A00C0EDFA /* AppDelegate.swift in Sources */,
-				CE5DE9372535D87800C0EDFA /* CharacterModel.swift in Sources */,
+				CE5DE9372535D87800C0EDFA /* Character.swift in Sources */,
 				CEA24221253991D700C7A35C /* APIRickAndMortyManager.swift in Sources */,
 				CEDD02CF2539C56B002B8339 /* NetworkRouterCompletion.swift in Sources */,
 				CEDD02D92539CC8E002B8339 /* NetworkManager.swift in Sources */,

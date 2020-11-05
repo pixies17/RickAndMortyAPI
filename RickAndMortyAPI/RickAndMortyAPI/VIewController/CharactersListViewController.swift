@@ -7,9 +7,9 @@
 
 import SnapKit
 
-protocol CharacterListViewInput: class {
+protocol CharactersListViewInput: class {
     func reloadData()
-    func showModels(_ models: [CharacterModel])
+    func showModels(_ models: [Character])
 }
 
 class CharactersListViewController: UIViewController {
@@ -17,7 +17,7 @@ class CharactersListViewController: UIViewController {
     
     var output: CharactersListPresenter?
     
-    var models: [CharacterModel] = []
+    var models: [Character] = []
         
     lazy var tableView: UITableView = {
        let tableView = UITableView()
@@ -81,7 +81,7 @@ class CharactersListViewController: UIViewController {
 
 extension CharactersListViewController {
     func setupTableView() {
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellId)
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.cellId)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -109,7 +109,7 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.cellId, for: indexPath) as? TableViewCell else { fatalError("cant deque cell")}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.cellId, for: indexPath) as? CharacterCell else { fatalError("cant deque cell")}
         
         let model = models[indexPath.row]
         cell.configure(with: model)
@@ -129,10 +129,10 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
-// MARK: - CharacterListViewInput
+// MARK: - CharactersListViewInput
 
-extension CharactersListViewController: CharacterListViewInput {
-    func showModels(_ models: [CharacterModel]) {
+extension CharactersListViewController: CharactersListViewInput {
+    func showModels(_ models: [Character]) {
         self.models = models
         
         tableView.reloadData()

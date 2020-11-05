@@ -9,11 +9,11 @@ import Foundation
 import RealmSwift
 
 final class CharactersListPresenter {
-    weak var view: CharacterListViewInput?
+    weak var view: CharactersListViewInput?
     var router = Router<CharactersRequest>()
         
     func getCharacters() {
-        router.send(CharactersRequest(parameters: ["page": 14])) { result in
+        router.send(CharactersRequest(parameters: ["page": 13])) { result in
             switch result {
             case .success(let characters):
                 DispatchQueue.main.async {
@@ -26,31 +26,17 @@ final class CharactersListPresenter {
     }
 
     
-    func createModelRealm(for model: CharacterModel) {
+    func createModelRealm(for model: Character) {
         let realm = RealmService.shared.realm
-        
-        let modelForSave = CharacterModel(id: model.id)
-        #warning("такие кейсы лучше закрывать guardom ")
-        if realm.object(ofType: CharacterModel.self, forPrimaryKey: model.id) != nil { return }
-        
-        modelForSave.name = model.name
-        modelForSave.status = model.status
-        modelForSave.species = model.species
-        modelForSave.type = model.type
-        modelForSave.gender = model.gender
-        modelForSave.origin?.name = model.origin?.name ?? ""
-        modelForSave.imageUrl = model.imageUrl
-        modelForSave.characterUrl = model.characterUrl
-        
-        #warning(" почему сразу нельзя сохранить модель, которая подается на вход?")
-        RealmService.shared.save(modelForSave)
+
+        guard realm.object(ofType: Character.self, forPrimaryKey: model.id) == nil else { return }
+
+        RealmService.shared.save(model)
     }
     
-    func charactersListFromRealm() -> [CharacterModel] {
-        let realm = RealmService.shared.realm
-        #warning("сделай функцию в менеджере куда подается тип и ты достаешь все элементы этого типа из базы и возвращается сразу массив")
-        let characters = realm.objects(CharacterModel.self)
-        var modelsRealm: [CharacterModel] = []
+    func charactersListFromRealm() -> [Character] {
+        let characters = RealmService.shared.load(Character())
+        var modelsRealm: [Character] = []
         
         characters.forEach({ character in
             modelsRealm.append(character)

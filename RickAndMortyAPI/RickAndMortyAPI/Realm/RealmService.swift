@@ -24,5 +24,11 @@ final class RealmService {
         }
     }
     
+    func load<T: Object>(_ object: T) -> Results<T> {
+        let objects = realm.objects(T.self)
+        
+        return objects
+    }
+    
     private init() {}
 }

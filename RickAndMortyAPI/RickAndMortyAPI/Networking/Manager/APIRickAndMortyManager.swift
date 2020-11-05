@@ -8,7 +8,7 @@
 import Foundation
 
 struct CharactersRequest: APIRequest {    
-    typealias Response = CharacterList
+    typealias Response = CharactersList
     
     var path: String {
         return "character/"

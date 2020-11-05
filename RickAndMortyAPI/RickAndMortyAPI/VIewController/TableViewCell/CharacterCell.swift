@@ -9,14 +9,13 @@ import Foundation
 import SnapKit
 import SDWebImage
 
-#warning("нейминг")
-final class TableViewCell: UITableViewCell {
+final class CharacterCell: UITableViewCell {
     
     // MARK: - Properties
     
-    static let cellId = "TableViewCell"
+    static let cellId = "CharacterCell"
     
-    var model: CharacterModel?
+    var model: Character?
     
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
@@ -88,7 +87,7 @@ final class TableViewCell: UITableViewCell {
 
 // MARK: - Configuration
 
-extension TableViewCell {
+extension CharacterCell {
     func setupConstraints() {
         
         characterImage.snp.makeConstraints { make in
@@ -131,7 +130,7 @@ extension TableViewCell {
         characterImage.clipsToBounds = true
     }
     
-    func configure(with model: CharacterModel) {
+    func configure(with model: Character) {
         nameLabel.text = "Имя: " + model.name
         statusLabel.text = "Статус: " + model.status
         speciesLabel.text = "Вид: " + model.species

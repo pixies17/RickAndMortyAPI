@@ -23,26 +23,23 @@ final class Router<EndPoint: APIRequest>: NetworkRouter {
                     
                     switch result {
                     case .success:
-                        #warning("почему тут форс анрэп? может крашнуться")
                         guard let responseData = data else {
-                            completion(.failure(error!))
+                            completion(.failure(.incorrectData))
                             return
                         }
                         do {
                             let apiResponse = try self.decoder.decode(T.Response.self, from: responseData)
                             completion(.success(apiResponse))
                         } catch {
-                            completion(.failure(error))
+                            completion(.failure(.decoding))
                         }
-                    case .failure(let trouble):
-                        #warning("из стринга в error? зачем?")
-                        completion(.failure(trouble as! Error))
-                    
+                    case .failure:
+                        completion(.failure(.failed))
                     }
                 }
             })
         } catch {
-            completion(.failure(error))
+            completion(.failure(.encoding))
         }
         task?.resume()
     }
