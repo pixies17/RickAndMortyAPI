@@ -24,6 +24,7 @@ struct NetworkManager {
         switch response.statusCode {
         case 200...299:
             return .success
+            #warning("failed??????? serverError лучше")
         default: return .failure(.failed)
         }
     }

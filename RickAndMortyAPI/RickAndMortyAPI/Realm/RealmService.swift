@@ -24,10 +24,11 @@ final class RealmService {
         }
     }
     
-    func load<T: Object>(_ object: T) -> Results<T> {
+    #warning("пофиксил, ты зачем-то объект передавал, а тебе надо было просто тип указать")
+    func load<T: Object>(_ object: T.Type) -> [T] {
         let objects = realm.objects(T.self)
-        
-        return objects
+        #warning("сделал чтобы каждый раз не форматировать данные")
+        return objects.map{ $0 }
     }
     
     private init() {}

@@ -13,6 +13,7 @@ protocol CharactersListViewInput: class {
 }
 
 class CharactersListViewController: UIViewController {
+    
     // MARK: - Properties
     
     var output: CharactersListPresenter?
@@ -21,7 +22,7 @@ class CharactersListViewController: UIViewController {
         
     lazy var tableView: UITableView = {
        let tableView = UITableView()
-        
+        #warning("если ты уже делаешь сетап внутри объявления вьюхи, то функция сетап тейбл вью тебе не нужна")
         view.addSubview(tableView)
         
         return tableView
@@ -36,6 +37,7 @@ class CharactersListViewController: UIViewController {
 
         return navBar
     }()
+    #warning("убрать это")
     
 //    lazy var navigaionControllerName: UINavigationItem = {
 //       let navigaionControllerName = UILabel()
@@ -79,6 +81,7 @@ class CharactersListViewController: UIViewController {
 
 // MARK: - Configuration
 
+#warning("приватность")
 extension CharactersListViewController {
     func setupTableView() {
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.cellId)
@@ -109,6 +112,7 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        #warning("создать экстеншен")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.cellId, for: indexPath) as? CharacterCell else { fatalError("cant deque cell")}
         
         let model = models[indexPath.row]

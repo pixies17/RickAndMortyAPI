@@ -77,6 +77,7 @@ final class CharacterCell: UITableViewCell {
         return characterImage
     }()
     
+    #warning("это у тебя будет вызываться при каждом layoutSubviews, зачем? надо придумать как это сделать только 1 раз, поразбирайся с жизненным циклом ячейки")
     override func layoutSubviews() {
         super.layoutSubviews()
         
