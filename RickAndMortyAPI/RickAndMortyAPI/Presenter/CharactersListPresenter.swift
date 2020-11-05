@@ -8,15 +8,12 @@
 import Foundation
 import RealmSwift
 
-#warning("Лучше сделать какой-то класс который будет работаь с реалмом, чтобы внутри пресентера каждый раз не инитить реалм")
 final class CharactersListPresenter {
     weak var view: CharacterListViewInput?
     var router = Router<CharactersRequest>()
-    
-    let realm = try! Realm()
-    
+        
     func getCharacters() {
-        router.send(CharactersRequest(parameters: ["page": 15])) { result in
+        router.send(CharactersRequest(parameters: ["page": 14])) { result in
             switch result {
             case .success(let characters):
                 DispatchQueue.main.async {
@@ -29,7 +26,9 @@ final class CharactersListPresenter {
     }
 
     
-    func saveModel(from model: CharacterModel) {
+    func createModelRealm(for model: CharacterModel) {
+        let realm = RealmService.shared.realm
+        
         let modelForSave = CharacterModel(id: model.id)
         
         if realm.object(ofType: CharacterModel.self, forPrimaryKey: model.id) != nil { return }
@@ -43,12 +42,12 @@ final class CharactersListPresenter {
         modelForSave.imageUrl = model.imageUrl
         modelForSave.characterUrl = model.characterUrl
         
-        try! realm.write {
-            realm.add(modelForSave)
-        }
+        RealmService.shared.save(modelForSave)
     }
     
-    func loadCharactersFromRealm() -> [CharacterModel] {
+    func charactersListFromRealm() -> [CharacterModel] {
+        let realm = RealmService.shared.realm
+        
         let characters = realm.objects(CharacterModel.self)
         var modelsRealm: [CharacterModel] = []
         

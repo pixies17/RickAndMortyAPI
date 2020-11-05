@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5255412553E9AA0044B011 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5255402553E9AA0044B011 /* RealmService.swift */; };
 		CE5DE8F32535BA0A00C0EDFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */; };
 		CE5DE8F72535BA0A00C0EDFA /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE8F62535BA0A00C0EDFA /* CharactersListViewController.swift */; };
 		CE5DE8FC2535BA0C00C0EDFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5DE8FB2535BA0C00C0EDFA /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		4A738A18B67F461E0218C1D2 /* Pods-RickAndMortyAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyAPI.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyAPI/Pods-RickAndMortyAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		7D6B419C7D9290035A0B6B4F /* Pods_RickAndMortyAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DE13EA573C5F47D783D2E1 /* Pods-RickAndMortyAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyAPI.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyAPI/Pods-RickAndMortyAPI.release.xcconfig"; sourceTree = "<group>"; };
+		CE5255402553E9AA0044B011 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		CE5DE8EF2535BA0A00C0EDFA /* RickAndMortyAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5DE8F62535BA0A00C0EDFA /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE5255452553E9B90044B011 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				CE5255402553E9AA0044B011 /* RealmService.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		CE5DE8E62535BA0900C0EDFA = {
 			isa = PBXGroup;
 			children = (
@@ -130,12 +140,13 @@
 		CE5DE8F12535BA0A00C0EDFA /* RickAndMortyAPI */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */,
+				CE5255452553E9B90044B011 /* Realm */,
 				CEA1D98B253DB24400A224DE /* Assembly */,
 				CE64A9032536DCE9003321B4 /* Networking */,
 				CE64A9022536DCDD003321B4 /* Model */,
 				CEC41E6B2536EEDA00FB4C25 /* Presenter */,
 				CE64A9002536DCAB003321B4 /* VIewController */,
-				CE5DE8F22535BA0A00C0EDFA /* AppDelegate.swift */,
 				CE5DE8FB2535BA0C00C0EDFA /* Assets.xcassets */,
 				CE5DE8FD2535BA0C00C0EDFA /* LaunchScreen.storyboard */,
 				CE5DE9002535BA0C00C0EDFA /* Info.plist */,
@@ -415,6 +426,7 @@
 			files = (
 				CEC41E672536EED400FB4C25 /* CharactersListPresenter.swift in Sources */,
 				CE5DE8F72535BA0A00C0EDFA /* CharactersListViewController.swift in Sources */,
+				CE5255412553E9AA0044B011 /* RealmService.swift in Sources */,
 				CEA242262539BDAA00C7A35C /* APIRequest.swift in Sources */,
 				CEA1D98D253DB25400A224DE /* Assembly.swift in Sources */,
 				CE5DE92E2535BE6300C0EDFA /* TableViewCell.swift in Sources */,

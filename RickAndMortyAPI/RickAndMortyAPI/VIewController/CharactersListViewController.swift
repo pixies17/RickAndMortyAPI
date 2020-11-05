@@ -73,7 +73,7 @@ class CharactersListViewController: UIViewController {
         
         guard let output = output else { return }
         output.getCharacters()
-//        models = output.loadCharactersFromRealm()
+        models = output.charactersListFromRealm()
     }
 }
 
@@ -125,7 +125,7 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         
         let model = models[indexPath.row]
-        output?.saveModel(from: model)
+        output?.createModelRealm(for: model)
     }
 }
 

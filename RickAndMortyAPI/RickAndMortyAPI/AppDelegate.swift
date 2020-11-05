@@ -15,15 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationContoller: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        #warning("лучше вынести в отдельный метод")
+        windowConfiguration()
+        return true
+    }
+}
+
+// MARK: - Window configuration
+
+extension AppDelegate {
+    private func windowConfiguration() {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let mainVC = Assembly.createCharacterModule()
         navigationContoller = UINavigationController(rootViewController: mainVC)
         window?.rootViewController = navigationContoller
         window?.makeKeyAndVisible()
-        
-        return true
     }
 }
 
