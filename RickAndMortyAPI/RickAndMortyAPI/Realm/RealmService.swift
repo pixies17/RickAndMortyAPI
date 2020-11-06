@@ -24,11 +24,14 @@ final class RealmService {
         }
     }
     
-    #warning("пофиксил, ты зачем-то объект передавал, а тебе надо было просто тип указать")
     func load<T: Object>(_ object: T.Type) -> [T] {
         let objects = realm.objects(T.self)
-        #warning("сделал чтобы каждый раз не форматировать данные")
         return objects.map{ $0 }
+    }
+    
+    func isEntityExist<T: Object>(in object: T.Type, id: Int) -> Bool {
+        guard realm.object(ofType: object, forPrimaryKey: id) == nil else { return true }
+        return false
     }
     
     private init() {}

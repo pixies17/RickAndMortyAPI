@@ -34,7 +34,7 @@ final class Router<EndPoint: APIRequest>: NetworkRouter {
                             completion(.failure(.decoding))
                         }
                     case .failure:
-                        completion(.failure(.failed))
+                        completion(.failure(.serverError))
                     }
                 }
             })

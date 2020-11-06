@@ -13,7 +13,7 @@ final class CharactersListPresenter {
     var router = Router<CharactersRequest>()
         
     func getCharacters() {
-        router.send(CharactersRequest(parameters: ["page": 13])) { result in
+        router.send(CharactersRequest(parameters: ["page": 20])) { result in
             switch result {
             case .success(let charactersList):
                 DispatchQueue.main.async {
@@ -27,10 +27,7 @@ final class CharactersListPresenter {
 
     
     func createModelRealm(for model: Character) {
-        let realm = RealmService.shared.realm
-
-        #warning("создать метод проверки существования сущности по id")
-        guard realm.object(ofType: Character.self, forPrimaryKey: model.id) == nil else { return }
+        guard RealmService.shared.isEntityExist(in: Character.self, id: model.id) == false else { return }
 
         RealmService.shared.save(model)
     }

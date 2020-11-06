@@ -8,7 +8,7 @@
 import Foundation
 
 public enum Error: Swift.Error {
-    case failed
+    case serverError
     case encoding
     case decoding
     case incorrectData
@@ -24,8 +24,7 @@ struct NetworkManager {
         switch response.statusCode {
         case 200...299:
             return .success
-            #warning("failed??????? serverError лучше")
-        default: return .failure(.failed)
+        default: return .failure(.serverError)
         }
     }
 }

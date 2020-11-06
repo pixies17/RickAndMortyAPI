@@ -19,9 +19,9 @@ class CharactersListViewController: UIViewController {
     var output: CharactersListPresenter?
     
     var models: [Character] = []
-        
+    
     lazy var tableView: UITableView = {
-       let tableView = UITableView()
+        let tableView = UITableView()
         #warning("если ты уже делаешь сетап внутри объявления вьюхи, то функция сетап тейбл вью тебе не нужна")
         view.addSubview(tableView)
         
@@ -29,34 +29,22 @@ class CharactersListViewController: UIViewController {
     }()
     
     lazy var navigationBar: UINavigationBar = {
-       let navBar = UINavigationBar()
-
+        let navBar = UINavigationBar()
+        
         navigationItem.rightBarButtonItem = loadCharactersButton
         navigationItem.title = "Персонажи"
         view.addSubview(navBar)
-
+        
         return navBar
     }()
-    #warning("убрать это")
-    
-//    lazy var navigaionControllerName: UINavigationItem = {
-//       let navigaionControllerName = UILabel()
-//        navigaionControllerName.text = "Персонажи"
-//        navigaionControllerName.font = .systemFont(ofSize: 20, weight: .bold)
-//        
-//        let navigaionControllerNameItem = UINavigationItem()
-//        navigationBar.setItems([navigaionControllerNameItem], animated: false)
-//        
-//        return navigaionControllerNameItem
-//    }()
     
     var loadCharactersButton: UIBarButtonItem = {
-//        let loadCharactersButton = UIButton()
-//        loadCharactersButton.setImage(.add, for: .normal)
-//        loadCharactersButton.addTarget(self, action: #selector(reloadTableView), for: .touchDown)
+        //        let loadCharactersButton = UIButton()
+        //        loadCharactersButton.setImage(.add, for: .normal)
+        //        loadCharactersButton.addTarget(self, action: #selector(reloadTableView), for: .touchDown)
         
         let loadCharactersButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(reloadData))
-                
+        
         return loadCharactersButtonItem
     }()
     
@@ -81,9 +69,8 @@ class CharactersListViewController: UIViewController {
 
 // MARK: - Configuration
 
-#warning("приватность")
 extension CharactersListViewController {
-    func setupTableView() {
+    private func setupTableView() {
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.cellId)
         
         tableView.delegate = self
@@ -94,7 +81,7 @@ extension CharactersListViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -117,6 +104,8 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
         
         let model = models[indexPath.row]
         cell.configure(with: model)
+        cell.setupConstraints()
+        cell.setupLayout()
         
         return cell
     }
