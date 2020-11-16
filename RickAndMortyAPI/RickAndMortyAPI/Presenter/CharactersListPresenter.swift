@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 final class CharactersListPresenter {
+    #warning("форс анрэп?")
     weak var view: CharactersListViewInput!
     var router = Router<CharactersRequest>()
     
@@ -24,6 +25,7 @@ final class CharactersListPresenter {
             switch result {
             case .success(let charactersList):
                 DispatchQueue.main.async {
+                    #warning("данные надо хранить в презентере, зачем они тебе в ВК?")
                     let cachedCount = self.view.models.count
                     self.updateMaxCount(with: charactersList.info.count)
                     self.view.models.append(contentsOf: charactersList.results)
@@ -39,6 +41,7 @@ final class CharactersListPresenter {
 
     
     func createModelRealm(for model: Character) {
+        #warning("in?")
         guard RealmService.shared.isEntityExist(in: Character.self, id: model.id) == false else { return }
 
         RealmService.shared.save(model)
