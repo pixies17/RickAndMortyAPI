@@ -9,7 +9,7 @@ import Foundation
 import SnapKit
 import SDWebImage
 
-final class CharacterCell: UITableViewCell {
+final class CharacterCell: BaseTableViewCell {
     
     // MARK: - Properties
     
@@ -77,18 +77,7 @@ final class CharacterCell: UITableViewCell {
         return characterImage
     }()
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//        setupConstraints()
-//        setupLayout()
-//    }
-}
-
-// MARK: - Configuration
-
-extension CharacterCell {
-    func setupConstraints() {
+    override func setupConstraints() {
         
         characterImage.snp.makeConstraints { make in
             make.top.leading.bottom.equalToSuperview().inset(10)
@@ -123,6 +112,16 @@ extension CharacterCell {
         }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        setupLayout()
+    }
+}
+
+// MARK: - Configuration
+
+extension CharacterCell {
     func setupLayout() {
         backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
@@ -131,7 +130,7 @@ extension CharacterCell {
     }
     
     func configure(with model: Character) {
-        nameLabel.text = "Имя: " + model.name
+        nameLabel.text = "\(model.id). " + "Имя: " + model.name
         statusLabel.text = "Статус: " + model.status
         speciesLabel.text = "Вид: " + model.species
         genderLabel.text = "Пол: " + model.gender

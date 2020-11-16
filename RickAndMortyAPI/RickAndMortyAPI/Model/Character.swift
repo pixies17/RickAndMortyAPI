@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 struct CharactersList: Decodable {
+    let info: Info
     let results: [Character]
 }
 
@@ -49,4 +50,11 @@ class Character: Object, Decodable {
 struct Origin: Decodable {
     var name: String
     var url: String
+}
+
+struct Info: Decodable {
+    var count: Int
+    var pages: Int
+    var next: String?
+    var prev: String?
 }

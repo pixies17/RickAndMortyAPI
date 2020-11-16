@@ -53,6 +53,7 @@ final class Router<EndPoint: APIRequest>: NetworkRouter {
         request.httpMethod = route.httpMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        print("\(request)")
         return request
     }
 }

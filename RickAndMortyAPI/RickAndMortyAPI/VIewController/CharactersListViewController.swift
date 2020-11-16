@@ -10,6 +10,8 @@ import SnapKit
 protocol CharactersListViewInput: class {
     func reloadData()
     func showModels(_ models: [Character])
+    func append(_ characters: [Character], startIndex: Int)
+    var models: [Character] { get set }
 }
 
 class CharactersListViewController: UIViewController {
@@ -64,6 +66,7 @@ class CharactersListViewController: UIViewController {
         guard let output = output else { return }
         output.getCharacters()
         models = output.charactersListFromRealm()
+        print("\(String(describing: output.maxCount))")
     }
 }
 
@@ -104,10 +107,16 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
         
         let model = models[indexPath.row]
         cell.configure(with: model)
-        cell.setupConstraints()
-        cell.setupLayout()
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let output = output else { return }
+        if indexPath.row == models.count - 1 && models.count < output.maxCount ?? 0 {
+            
+            output.getCharacters()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -134,6 +143,23 @@ extension CharactersListViewController: CharactersListViewInput {
     @objc func reloadData() {
         tableView.reloadData()
         print("hello")
+    }
+    
+    func append(_ characters: [Character], startIndex: Int) {
+        guard !characters.isEmpty else {return}
+        guard tableView.numberOfRows(inSection: 0) != 0 else {
+            reloadData()
+            return
+        }
+        
+        var newIndexPaths = [IndexPath]()
+        for (index, _) in characters.enumerated() {
+            newIndexPaths.append(IndexPath(item: startIndex + index, section: 0))
+        }
+        
+        tableView.beginUpdates()
+        tableView.insertRows(at: newIndexPaths, with: .none)
+        tableView.endUpdates()
     }
 }
 
