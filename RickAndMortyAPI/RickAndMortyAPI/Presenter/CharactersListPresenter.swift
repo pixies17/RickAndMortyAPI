@@ -51,9 +51,11 @@ final class CharactersListPresenter {
     }
     
     func charactersListFromRealm() {
-        view?.models = []
-        
         let characters = RealmService.shared.load(Character.self)
+        
+        guard characters.count != 0 else { return }
+        
+        view?.models = []
         
         view?.models = characters
         

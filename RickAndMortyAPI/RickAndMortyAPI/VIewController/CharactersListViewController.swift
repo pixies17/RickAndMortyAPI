@@ -163,6 +163,7 @@ extension CharactersListViewController: CharactersListViewInput {
     }
     
     func scrollToTop() {
+        guard tableView.numberOfRows(inSection: 0) != 0 else { return }
         let topRow = IndexPath(row: 0, section: 0)
         
         tableView.scrollToRow(at: topRow, at: .top, animated: true)
