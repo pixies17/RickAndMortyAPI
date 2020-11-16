@@ -11,6 +11,7 @@ protocol CharactersListViewInput: class {
     func reloadData()
     func showModels(_ models: [Character])
     func append(_ characters: [Character], startIndex: Int)
+    func scrollToTop()
     var models: [Character] { get set }
 }
 
@@ -65,7 +66,6 @@ class CharactersListViewController: UIViewController {
         
         guard let output = output else { return }
         output.getCharacters()
-        models = output.charactersListFromRealm()
         print("\(String(describing: output.maxCount))")
     }
 }
@@ -160,6 +160,12 @@ extension CharactersListViewController: CharactersListViewInput {
         tableView.beginUpdates()
         tableView.insertRows(at: newIndexPaths, with: .none)
         tableView.endUpdates()
+    }
+    
+    func scrollToTop() {
+        let topRow = IndexPath(row: 0, section: 0)
+        
+        tableView.scrollToRow(at: topRow, at: .top, animated: true)
     }
 }
 

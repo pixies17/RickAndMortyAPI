@@ -18,7 +18,10 @@ final class Router<EndPoint: APIRequest>: NetworkRouter {
         do {
             let request = try buildRequest(from: request)
             task = session.dataTask(with: request, completionHandler: { data, response, error in
-                if let response = response as? HTTPURLResponse {
+                guard let response = response as? HTTPURLResponse else {
+                    completion(.failure(.noInternet))
+                    return
+                }
                     let result = NetworkManager.handleNetworkResponse(response)
                     
                     switch result {
@@ -36,7 +39,6 @@ final class Router<EndPoint: APIRequest>: NetworkRouter {
                     case .failure:
                         completion(.failure(.serverError))
                     }
-                }
             })
         } catch {
             completion(.failure(.encoding))

@@ -12,6 +12,7 @@ public enum Error: Swift.Error {
     case encoding
     case decoding
     case incorrectData
+    case noInternet
 }
 
 struct NetworkManager {

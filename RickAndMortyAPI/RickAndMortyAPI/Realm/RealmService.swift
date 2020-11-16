@@ -29,7 +29,7 @@ final class RealmService {
         return objects.map{ $0 }
     }
     
-    func isEntityExist<T: Object>(in object: T.Type, id: Int) -> Bool {
+    func isEntityExist<T: Object>(_ object: T.Type, id: Int) -> Bool {
         guard realm.object(ofType: object, forPrimaryKey: id) == nil else { return true }
         return false
     }
